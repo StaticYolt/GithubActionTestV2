@@ -18,7 +18,7 @@ jobs:
       - name: Print names
         id: shared-python-versions
         run: |
-          echo 'colors=["3.10", "3.11", "3.12"]' >> "$GITHUB_OUTPUT"
+          echo 'shared-python-versions=["3.10", "3.11", "3.12"]' >> "$GITHUB_OUTPUT"
   job-two:
     needs: job-one
     strategy:
