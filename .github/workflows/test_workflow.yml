@@ -16,7 +16,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Print names
-        run: echo 'colors=["3.10", "3.11", "3.12"]' >> "$GITHUB_OUTPUT"
+        id: shared-python-versions
+        run: |
+          echo 'colors=["3.10", "3.11", "3.12"]' >> "$GITHUB_OUTPUT"
   job-two:
     needs: job-one
     strategy:
