@@ -22,7 +22,6 @@ jobs:
   job-two:
     needs: job-one
     strategy:
-      fail-fast: false
       matrix:
         shared-python-versions: ${{ fromJSON(needs.job-one.outputs.shared-python-versions) }}
     runs-on: ubuntu-latest
