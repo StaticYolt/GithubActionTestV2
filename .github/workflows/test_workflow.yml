@@ -1,0 +1,12 @@
+name: Test Workflow
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+jobs:
+  job-one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if Conda exists
+        run: conda --version
