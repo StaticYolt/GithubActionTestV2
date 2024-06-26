@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ${{ fromJSON(needs.job-one.outputs.shared-python-versions) }}
+        shared-python-versions: ${{ fromJSON(needs.job-one.outputs.shared-python-versions) }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo More stuff
