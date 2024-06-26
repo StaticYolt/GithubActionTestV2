@@ -6,6 +6,8 @@ on:
     branches: [ "main" ]
 jobs:
   job-one:
+    outputs:
+      shared-python-versions: $
     strategy:
       fail-fast: false
       matrix:
@@ -14,13 +16,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Print names
-        run: echo ${{ matrix.python-version }}
+        run: echo 'colors=["3.10", "3.11", "3.12"]' >> "$GITHUB_OUTPUT"
   job-two:
     needs: job-one
     strategy:
       fail-fast: false
       matrix:
-        python-version: ${{ needs.job-one.matrix.os }}
+        python-version: ${{ fromJSON(needs.job-one.outputs.shared-python-versions) }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo More stuff
