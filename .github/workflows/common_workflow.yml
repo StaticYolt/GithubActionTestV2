@@ -10,8 +10,10 @@ on:
 jobs:
   job0:
     runs-on: ubuntu-latest
+    env:
+      s: Something
     outputs:
-      some-thing: ohmygodwork
+      some-thing: ${{ env.s }}
     #${{ steps.otpt-something.SOMETHING }}
     steps:
       - name: Output vars
