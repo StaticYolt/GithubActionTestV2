@@ -29,5 +29,10 @@ jobs:
     needs: job0
     steps:
       - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
-
+      - name: Downloading Conda Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.version }}
+      - name: confirm download
+        run: ls
 # something
