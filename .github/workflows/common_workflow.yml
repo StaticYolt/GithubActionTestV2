@@ -16,6 +16,8 @@ jobs:
       some-thing: ${{ env.CONDA_PACK_ENV_NAME }}
     #${{ steps.otpt-something.SOMETHING }}
     steps:
+      - name: buffer step
+        run: echo "buffer"
       - name: Put thing into env var
         run: echo "CONDA_PACK_ENV_NAME=uhuh" >> $GITHUB_ENV
 #      - name: Output vars
