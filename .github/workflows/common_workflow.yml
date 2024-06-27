@@ -18,11 +18,11 @@ jobs:
     steps:
       - name: Put thing into env var
         run: echo "CONDA_PACK_ENV_NAME=uhuh" >> $GITHUB_ENV
-      - name: Output vars
-        id: otpt-something
-        run: |
-          num=hello
-          echo "SOMETHING=$num" >> $GITHUB_OUTPUT
+#      - name: Output vars
+#        id: otpt-something
+#        run: |
+#          num=hello
+#          echo "SOMETHING=$num" >> $GITHUB_OUTPUT
 #      - name: Create txt
 #        run: touch ${{ inputs.version }}.txt
 #      - name: upload txt as artifact
