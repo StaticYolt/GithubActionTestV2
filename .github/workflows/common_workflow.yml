@@ -13,7 +13,7 @@ jobs:
     env:
       s: Something
     outputs:
-      some-thing: CONDA_PACK_ENV_NAME
+      some-thing: ${{ env.CONDA_PACK_ENV_NAME }}
     #${{ steps.otpt-something.SOMETHING }}
     steps:
       - name: Put thing into env var
