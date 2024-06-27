@@ -11,7 +11,8 @@ jobs:
   job0:
     runs-on: ubuntu-latest
     outputs:
-      some-thing: ${{ steps.otpt-something.SOMETHING }}
+      some-thing: ohmygodwork
+    #${{ steps.otpt-something.SOMETHING }}
     steps:
       - name: Output vars
         id: otpt-something
