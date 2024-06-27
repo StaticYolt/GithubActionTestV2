@@ -36,8 +36,9 @@ jobs:
     needs: [job0]
     steps:
       - run: |
+          set +uex
           echo "hello"
-          echo "${{ needs.job0.outputs.some-thing}}"
+          echo "${{ needs.job0.outputs.some-thing }}"
 #      - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
 #      - name: Downloading Conda Artifact
 #        uses: actions/download-artifact@v4
