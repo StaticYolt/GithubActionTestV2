@@ -14,3 +14,4 @@ jobs:
     uses: ./.github/workflows/common_workflow.yml # calls the one above ^
     with:
       version: ${{ matrix.python-version }}
+    secrets: inherit
