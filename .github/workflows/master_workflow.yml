@@ -21,7 +21,7 @@ jobs:
           ls -a
           ls .github/workflows
       - name: run other workflow
-        uses: ./.github/workflows/common_workflow.yml # calls the one above ^
+        run: ./.github/workflows/common_workflow.yml # calls the one above ^
         with:
           version: ${{ matrix.python-version }}
 
