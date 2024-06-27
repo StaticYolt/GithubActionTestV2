@@ -11,7 +11,7 @@ jobs:
   job0:
     runs-on: ubuntu-latest
     env:
-      s: something
+      s: somethingelse
     outputs:
       some-thing: ${{ env.CONDA_PACK_ENV_NAME }}
     #${{ steps.otpt-something.SOMETHING }}
@@ -19,7 +19,9 @@ jobs:
       - name: buffer step
         run: echo "buffer"
       - name: Put thing into env var
-        run: echo "CONDA_PACK_ENV_NAME=${{env.s}}" >> $GITHUB_ENV
+        run: |
+          export CONDA_PACK_ENV_NAME=${{env.s}}
+          echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
 #      - name: Output vars
 #        id: otpt-something
 #        run: |
