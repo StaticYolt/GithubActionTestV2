@@ -8,6 +8,17 @@ on:
         type: string
 
 jobs:
+  job0:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create txt
+        run: touch ${{ inputs.version }}.txt
+      - name: upload txt as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.version }}
+          path: ${{ inputs.version }}.txt
+
   job1:
     strategy:
       fail-fast: false
