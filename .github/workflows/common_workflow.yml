@@ -9,11 +9,6 @@ on:
 
 jobs:
   job1:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'job1 version ${{ inputs.version }}'
-
-  job2:
     strategy:
       fail-fast: false
       matrix:

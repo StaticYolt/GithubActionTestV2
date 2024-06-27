@@ -11,7 +11,16 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [3.10, 3.11, 3.12]
-    uses: ./.github/workflows/common_workflow.yml # calls the one above ^
-    with:
-      version: ${{ matrix.python-version }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: run other workflow
+        uses: ./.github/workflows/common_workflow.yml # calls the one above ^
+        with:
+          version: ${{ matrix.python-version }}
+
+#    uses: ./.github/workflows/common_workflow.yml # calls the one above ^
+#    with:
+#      version:
+#  artifact-setup:
+#    needs: version-matrix
+#    runs-on: ubuntu-latest
