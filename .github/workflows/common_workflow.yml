@@ -5,7 +5,7 @@ on:
     inputs:
       version: # the variable you can use in place of a matrix
         required: true
-        type: number
+        type: string
 
 jobs:
   job1:
