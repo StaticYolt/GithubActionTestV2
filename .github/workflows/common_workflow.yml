@@ -16,7 +16,8 @@ jobs:
       - name: Output vars
         id: otpt-something
         run: |
-          echo "SOMETHING=hello" >> $GITHUB_OUTPUT
+          num=hello
+          echo "SOMETHING=$num" >> $GITHUB_OUTPUT
 #      - name: Create txt
 #        run: touch ${{ inputs.version }}.txt
 #      - name: upload txt as artifact
@@ -34,7 +35,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: [job0]
     steps:
-      - run: echo "${{ needs.job0.outputs.some-thing}}"
+      - run: |
+          echo "hello"
+          echo "${{ needs.job0.outputs.some-thing}}"
 #      - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
 #      - name: Downloading Conda Artifact
 #        uses: actions/download-artifact@v4
