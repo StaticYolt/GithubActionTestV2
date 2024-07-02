@@ -11,8 +11,8 @@ jobs:
   job0:
     runs-on: ubuntu-latest
     outputs:
-      beamline: ${{ matrix.beamline }}
-      conclusion: ${{ matrix.conclusion }}
+      beamline: ${{ matrix.repos.beamline }}
+      conclusion: ${{ matrix.repos.conclusion }}
     strategy:
       matrix:
         repos:
@@ -20,8 +20,8 @@ jobs:
             conclusion: na
     steps:
       - run: |
-          echo ${{ matrix.beamline }}
-          echo ${{ matrix.conclusion }}
+          echo ${{ matrix.repos.beamline }}
+          echo ${{ matrix.repos.conclusion }}
 
 #    steps:
 #      - name: Put thing into env var
