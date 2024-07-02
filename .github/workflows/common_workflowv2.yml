@@ -51,8 +51,9 @@ jobs:
     needs: job0
     steps:
       - run: |
-          echo "${{needs.job0.outputs.result}}"
-          echo "${{needs.job0}}"
+          echo "${{needs.job0.result}}"
+          echo "${{needs.job0.container.id}}"
+          echo "${{needs.job0.status}}"
 
 #      - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
 #      - name: Downloading Conda Artifact
