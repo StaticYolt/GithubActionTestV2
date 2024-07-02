@@ -18,6 +18,8 @@ jobs:
         repos:
           - beamline: srx
             conclusion: na
+          - beamline: csx
+            conclusion: success
     steps:
       - run: |
           echo ${{ matrix.repos.beamline }}
