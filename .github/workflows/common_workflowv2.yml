@@ -11,7 +11,7 @@ jobs:
   job0:
     name: ${{matrix.repos.beamline}}
     outputs:
-      job0-id: ${{ job.container.id }}
+      job0-id: ${{ job0.container.id }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
