@@ -45,7 +45,7 @@ jobs:
     steps:
       - run: |
           echo "hello"
-          echo "${{ fromJson(needs.job0.outputs.test-matrix )}}"
+          echo "${{ fromJson(needs.job0.outputs.test-matrix) }}"
 
 #      - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
 #      - name: Downloading Conda Artifact
