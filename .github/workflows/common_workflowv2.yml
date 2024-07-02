@@ -10,6 +10,8 @@ on:
 jobs:
   job0:
     name: ${{matrix.repos.beamline}}
+    outputs:
+      job0-id: ${{ job.container.id }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -52,8 +54,7 @@ jobs:
     steps:
       - run: |
           echo "${{needs.job0.result}}"
-          echo "${{needs.job0.container.id}}"
-          echo "${{needs.job0.status}}"
+          echo "${{needs.job0.outputs.job0-id}}"
 
 #      - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
 #      - name: Downloading Conda Artifact
