@@ -1,29 +1,46 @@
 name: Common Workflow
-
-on:
-  workflow_call:
-    inputs:
-      version: # the variable you can use in place of a matrix
-        required: true
-        type: string
-
+on: push
 jobs:
-  job0:
-    name: ${{matrix.repos.beamline}}
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
+  job2:
+    needs: job1
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        repos:
-          - beamline: srx
-            conclusion: na
-          - beamline: csx
-            conclusion: success
+      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
+      - run: echo "Matrix - Project ${{ matrix.project }}, Config ${{ matrix.config }}"
+
+#
+#on:
+#  workflow_call:
+#    inputs:
+#      version: # the variable you can use in place of a matrix
+#        required: true
+#        type: string
+#
+#jobs:
+#  job0:
+#    name: ${{matrix.repos.beamline}}
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        repos:
+#          - beamline: srx
+#            conclusion: na
+#          - beamline: csx
+#            conclusion: success
+#    steps:
 #      - run: |
 #          echo ${{ matrix.repos.beamline }}
 #          echo ${{ matrix.repos.conclusion }}
-      - name: Adding markdown
-        run: echo '### Hello world!' >> $GITHUB_STEP_SUMMARY
+#      - name: Adding markdown
+#        run: echo '### Hello world!' >> $GITHUB_STEP_SUMMARY
 #    steps:
 #      - name: Put thing into env var
 #        run: |
