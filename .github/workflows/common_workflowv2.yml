@@ -11,12 +11,15 @@ jobs:
   job0:
     runs-on: ubuntu-latest
     outputs:
-      test-matrix: ${{ steps.set-matrix.outputs.matrix }}
-
+      beamline: ${{ matrix.beamline }}
+      conclusion: ${{ matrix.conclusion }}
+    strategy:
+      matrix:
+        repos:
+          - beamline: srx
+            conclusion: na
     #${{ steps.otpt-something.SOMETHING }}
-    steps:
-      - id: set-matrix
-        run: echo "::set-output name=test-matrix::{\"include\":[{\"beamline-acronym\":\"csx\",\"conclusion\":\"success\"},{\"beamline-acronym\":\"srx\",\"conclusion\":\"failure\"}]}"
+#    steps:
 #      - name: Put thing into env var
 #        run: |
 #          export CONDA_PACK_ENV_NAME=${{env.s}}
@@ -45,7 +48,8 @@ jobs:
     steps:
       - run: |
           echo "hello"
-          echo "${{ fromJson(needs.job0.outputs.test-matrix) }}"
+          echo "${{needs.job0.outputs.beamline}}"
+          echo "${{needs.job0.outputs.conclusion}}"
 
 #      - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
 #      - name: Downloading Conda Artifact
