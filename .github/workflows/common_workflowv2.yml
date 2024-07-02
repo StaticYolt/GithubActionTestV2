@@ -22,7 +22,7 @@ jobs:
       - run: |
           echo ${{ matrix.beamline }}
           echo ${{ matrix.conclusion }}
-    #${{ steps.otpt-something.SOMETHING }}
+
 #    steps:
 #      - name: Put thing into env var
 #        run: |
