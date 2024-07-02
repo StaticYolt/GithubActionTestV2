@@ -10,18 +10,29 @@ on:
 jobs:
   job0:
     runs-on: ubuntu-latest
-    env:
-      s: somethingelse
     outputs:
-      some-thing: ${{ env.CONDA_PACK_ENV_NAME }}
+      test-matrix: ${{ matrix.test-matrix}}
+    strategy:
+      matrix:
+        test-matrix:
+          - org: "NSLS-II-CSX"
+            repo: "profile_collection"
+            branch: "master"
+            profile_branch: "master"
+            beamline_acronym: "csx"
+          - org: "NSLS-II-SRX"
+            repo: "profile_collection"
+            branch: "master"
+            profile_branch: "master"
+            beamline_acronym: "srx"
     #${{ steps.otpt-something.SOMETHING }}
     steps:
       - name: buffer step
         run: echo "buffer"
-      - name: Put thing into env var
-        run: |
-          export CONDA_PACK_ENV_NAME=${{env.s}}
-          echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
+#      - name: Put thing into env var
+#        run: |
+#          export CONDA_PACK_ENV_NAME=${{env.s}}
+#          echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
 #      - name: Output vars
 #        id: otpt-something
 #        run: |
@@ -46,7 +57,8 @@ jobs:
     steps:
       - run: |
           echo "hello"
-          echo "${{ needs.job0.outputs.some-thing }}"
+          echo "${{ needs.job0.outputs.test-matrix }}"
+
 #      - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
 #      - name: Downloading Conda Artifact
 #        uses: actions/download-artifact@v4
