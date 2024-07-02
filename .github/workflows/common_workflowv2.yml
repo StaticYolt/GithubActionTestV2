@@ -16,11 +16,13 @@ jobs:
   job2:
     needs: job1
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
+    env:
+      test: ${{ fromJSON(needs.job1.outputs.matrix) }}
+#    strategy:
+#      matrix:
     steps:
-      - run: echo "Matrix - Project ${{ matrix.project }}, Config ${{ matrix.config }}"
-
+#      - run: echo "Matrix - Project ${{ matrix.project }}, Config ${{ matrix.config }}"
+      - run: echo "${{ env.test }}"
 #
 #on:
 #  workflow_call:
