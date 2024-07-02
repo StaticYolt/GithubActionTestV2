@@ -1,5 +1,10 @@
 name: Common Workflow
-on: push
+on:
+  workflow_call:
+    inputs:
+      version: # the variable you can use in place of a matrix
+        required: true
+        type: string
 jobs:
   job1:
     runs-on: ubuntu-latest
