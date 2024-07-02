@@ -9,10 +9,8 @@ on:
 
 jobs:
   job0:
+    name: ${{matrix.repos.beamline}}
     runs-on: ubuntu-latest
-    outputs:
-      beamline: ${{ matrix.repos.beamline }}
-      conclusion: ${{ matrix.repos.conclusion }}
     strategy:
       matrix:
         repos:
@@ -53,9 +51,8 @@ jobs:
     needs: job0
     steps:
       - run: |
-          echo "hello"
-          echo "${{needs.job0.outputs.beamline}}"
-          echo "${{needs.job0.outputs.conclusion}}"
+          echo "${{needs.job0.outputs.result}}"
+          echo "${{needs.job0}}"
 
 #      - run: echo 'job1 version ${{ inputs.version }} and ${{matrix.repos.org}}'
 #      - name: Downloading Conda Artifact
