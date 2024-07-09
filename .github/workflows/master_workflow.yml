@@ -1,8 +1,8 @@
 name: Master Workflow
 
-on:
-  workflow_dispatch:
-  push:
+#on:
+#  workflow_dispatch:
+#  push:
 
 jobs:
   version-matrix:

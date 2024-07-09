@@ -22,6 +22,7 @@ jobs:
         run: |
           export CONDA_PACK_ENV_NAME=${{env.s}}
           echo "CONDA_PACK_ENV_NAME=${CONDA_PACK_ENV_NAME}" >> $GITHUB_ENV
+      - run: false
 #      - name: Output vars
 #        id: otpt-something
 #        run: |
