@@ -8,6 +8,16 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+      - name: Set env vars
+        run: |
+          export ZENODO_TOKEN=${{ secrets.ZENODO_TOKEN }}
+          echo "ZENODO_TOKEN=${ZENODO_TOKEN}" >> $GITHUB_ENV
+          
+          export GHA_TOKEN=${{github.token}}
+          echo "GHA_TOKEN=${GHA_TOKEN}" >> $GITHUB_ENV
+          
+          export GH_TOKEN=${{github.token}}
+          echo "GH_TOKEN=${GH_TOKEN}" >> $GITHUB_ENV
       - name: Install Python
         uses: actions/setup-python@v5
         with:
