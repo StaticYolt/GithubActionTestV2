@@ -73,7 +73,7 @@ def create_new_version(
     )
     print(rec.json()['id'])
     ret_newver = requests.post(
-        f"{BASE_URL}/records/12688274/versions",
+        f"{BASE_URL}/records/4057063/versions",
         params={"access_token": token},
     )
     print_now(ret_newver.url, ret_newver.status_code, ret_newver.json())
@@ -243,7 +243,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 
 if __name__ == "__main__":
 
-    conceptrecid = "12688274"  # never changes, it's for the initial version.
+    conceptrecid = "4057062"  # never changes, it's for the initial version.
     version = "2024-2.2"
     token = os.environ["ZENODO_TOKEN"]
 
