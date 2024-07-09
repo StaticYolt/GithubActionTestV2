@@ -315,7 +315,7 @@ if __name__ == "__main__":
             # f"{version}-py312-tiled-sha256sum.txt": "r",
             # f"{version}-py312-tiled.yml.txt": "r",
             # f"{version}-py312-tiled.tar.gz": "rb",
-            f"test-image.png"
+            f"test-image.png": "r"
         },
     )
     pprint.pprint(resp)
