@@ -239,7 +239,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 
 if __name__ == "__main__":
 
-    conceptrecid = "12688273"  # never changes, it's for the initial version.
+    conceptrecid = "12688274"  # never changes, it's for the initial version.
     version = "2024-2.2"
     token = os.environ["ZENODO_TOKEN"]
 
