@@ -39,13 +39,17 @@ def upload_files(bucket_url, files, token):
 
         basename = os.path.basename(file)
 
+        headers = {"Content-Type": "application/json"}
+        params = {'access_token': token}
         ret_content = requests.put(
             f"{bucket_url}/{basename}/content",
-            headers={
-                "Accept": "application/json",
-                "Content-Type": "application/octet-stream",
-                "Authorization": f"Bearer {token}",
-            },
+            # headers={
+            #     "Accept": "application/json",
+            #     "Content-Type": "application/octet-stream",
+            #     "Authorization": f"Bearer {token}",
+            # },
+            params=params,
+            headers=headers,
             data=open(file, mode),
         )
         print_now(ret_content.status_code, ret_content.text)
