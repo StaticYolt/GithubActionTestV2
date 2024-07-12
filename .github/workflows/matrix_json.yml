@@ -1,0 +1,14 @@
+on:
+  workflow_call:
+    inputs:
+      version: # the variable you can use in place of a matrix
+        required: true
+        type: string
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ beamline_info.yml }}
+    steps:
+      - run: echo ${{ matrix.repo.repo }}

@@ -1,0 +1,11 @@
+repos:
+  - org: "NSLS-II-CSX"
+    repo: "profile_collection"
+    branch: "master"
+    profile_branch: "master"
+    beamline_acronym: "csx"
+  - org: "NSLS-II-SRX"
+    repo: "profile_collection"
+    branch: "master"
+    profile_branch: "master"
+    beamline_acronym: "srx"
