@@ -11,8 +11,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.test_matrix }}
     steps:
-      - name: buffer step
-        run: echo "buffer"
+
       - name: Purpouseful error
         run: exit 1
   job2:

@@ -10,11 +10,14 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+      - name: print file
+        run: cat "matrix_json.yml"
       - id: set-matrix
 #        run: echo "matrix={\"include\":[{\"repos\":{\"name\":\"csx\",\"org\":\"NSLS-II-CSX\",\"acronym\":csx}},{\"repos\":{\"name\":\"srx\",\"org\":\"NSLS-II-SRX\",\"acronym\":srx}}]}" >> $GITHUB_OUTPUT
         run: |
-          TestStr="\"include\":[{\"repos\":{\"name\":\"foo\",\"a\":1,\"b\":2}},{\"repos\":{\"name\":\"bar\",\"a\":3,\"b\":4}}]"
+          TestStr='"include":[{"repos":{"name":"foo","a":1,"b":2}},{"repos":{"name":"bar","a":3,"b":4}}]'
           echo "matrix={$TestStr}" >> $GITHUB_OUTPUT
+        #TestStr="\"include\":[{\"repos\":{\"name\":\"foo\",\"a\":1,\"b\":2}},{\"repos\":{\"name\":\"bar\",\"a\":3,\"b\":4}}]"
   job2:
     needs: job1
     runs-on: ubuntu-latest
