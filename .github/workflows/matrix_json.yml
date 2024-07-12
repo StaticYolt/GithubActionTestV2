@@ -12,7 +12,7 @@ jobs:
     steps:
       - id: set-matrix
 #        run: echo "matrix={\"include\":[{\"repos\":{\"name\":\"csx\",\"org\":\"NSLS-II-CSX\",\"acronym\":csx}},{\"repos\":{\"name\":\"srx\",\"org\":\"NSLS-II-SRX\",\"acronym\":srx}}]}" >> $GITHUB_OUTPUT
-        run: echo "matrix={\"include\":[{\"project\":{\"name\":\"foo\",\"a\":1,\"b\":2}},{\"project\":{\"name\":\"bar\",\"a\":3,\"b\":4}}]}" >> $GITHUB_OUTPUT
+        run: echo "matrix={\"include\":[{\"repos\":{\"name\":\"foo\",\"a\":1,\"b\":2}},{\"repos\":{\"name\":\"bar\",\"a\":3,\"b\":4}}]}" >> $GITHUB_OUTPUT
   job2:
     needs: job1
     runs-on: ubuntu-latest
@@ -21,6 +21,7 @@ jobs:
     steps:
       - run: |
           echo "Matrix - Project ${{ matrix.repos.a }}"
+          echo "Matrix - Project ${{ matrix.repos.name }}"
           echo "Matrix - Project ${{ matrix.repos.b }}"
 #          echo "Matrix - Project ${{ matrix.repos.name }}"
 #          echo "Matrix - Project ${{ matrix.repos.acronym }}"
