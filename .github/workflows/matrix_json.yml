@@ -10,14 +10,21 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 #      - name: print file
 #        run: cat "matrix_json.yml"
       - id: set-matrix
 #        run: echo "matrix={\"include\":[{\"repos\":{\"name\":\"csx\",\"org\":\"NSLS-II-CSX\",\"acronym\":csx}},{\"repos\":{\"name\":\"srx\",\"org\":\"NSLS-II-SRX\",\"acronym\":srx}}]}" >> $GITHUB_OUTPUT
         run: |
-          TestStr='"include":[{"repos":{"name":"foo","a":1,"b":2}},{"repos":{"name":"bar","a":3,"b":4}}]'
-          echo "matrix={$TestStr}" >> $GITHUB_OUTPUT
-        #TestStr="\"include\":[{\"repos\":{\"name\":\"foo\",\"a\":1,\"b\":2}},{\"repos\":{\"name\":\"bar\",\"a\":3,\"b\":4}}]"
+          python3 yml_to_string.py
+          echo $LINK_STR
+          echo "matrix=${LINK_STR}" >> $GITHUB_OUTPUT
   job2:
     needs: job1
     runs-on: ubuntu-latest
