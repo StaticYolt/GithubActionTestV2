@@ -13,4 +13,4 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - run: ${{ needs.job1.outputs.test_matrix }}
+      - run: echo ${{ needs.job1.outputs.test_matrix }}
