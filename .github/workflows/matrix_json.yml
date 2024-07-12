@@ -24,7 +24,7 @@ jobs:
         run: |
           python3 yml_to_string.py
           echo $LINK_STR
-          TEST_STR = '"include":[{"repos":{"name":"csx","org":"NSLS-II-CSX","acronym":csx}},{"repos":{"name":"srx","org":"NSLS-II-SRX","acronym":srx}}]'
+          TEST_STR='"include":[{"repos":{"name":"csx","org":"NSLS-II-CSX","acronym":csx}},{"repos":{"name":"srx","org":"NSLS-II-SRX","acronym":srx}}]'
           echo "matrix={${TEST_STR}}" >> $GITHUB_OUTPUT
 
 #          echo "matrix={${LINK_STR}}" >> $GITHUB_OUTPUT
