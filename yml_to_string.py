@@ -47,4 +47,4 @@ matrix_link_str = matrix_link_str[:-1]
 matrix_link_str += "]}"
 
 print(matrix_link_str)
-os.system("export LINK_STR=" + matrix_link_str)
+os.system("echo LINK_STR=" + matrix_link_str + " >> $GITHUB_ENV")

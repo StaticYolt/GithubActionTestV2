@@ -24,9 +24,9 @@ jobs:
         run: |
           python3 yml_to_string.py
           env
-          echo "matrix=$LINK_STR"
+          echo "matrix=${{ env.LINK_STR }}"
           echo "matrix={\"include\":[{\"project\":{\"name\":\"foo\",\"a\":1,\"b\":2}},{\"project\":{\"name\":\"bar\",\"a\":3,\"b\":4}}]}"
-          echo "matrix=$LINK_STR" >> $GITHUB_OUTPUT
+          echo "matrix=${{ env.LINK_STR }}" >> $GITHUB_OUTPUT
 
 #          echo "matrix={${LINK_STR}}" >> $GITHUB_OUTPUT
   job2:
