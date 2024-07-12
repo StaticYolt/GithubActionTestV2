@@ -11,12 +11,12 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
-        run: echo "matrix={\"include\":[{\"project\":\"foo\"},{\"project\":\"bar\"}]}" >> $GITHUB_OUTPUT
+        run: echo "matrix={{\"include\":[{\"project\":\"foo\",\"info\":{\"a\":1,\"b\":2}},{\"project\":\"bar\",\"info\":{\"a\":3,\"b\":4}}]}" >> $GITHUB_OUTPUT
   job2:
     needs: job1
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
-      - run: echo "Matrix - Project ${{ matrix.include.project }}"
+      - run: echo "Matrix - Project ${{ matrix.project.info }}"
 
