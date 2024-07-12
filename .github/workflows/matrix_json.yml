@@ -24,7 +24,7 @@ jobs:
         run: |
           python3 yml_to_string.py
           echo $LINK_STR
-          echo "matrix=${LINK_STR}" >> $GITHUB_OUTPUT
+          echo "matrix={${LINK_STR}}" >> $GITHUB_OUTPUT
   job2:
     needs: job1
     runs-on: ubuntu-latest
