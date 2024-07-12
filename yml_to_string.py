@@ -30,7 +30,8 @@ for element in matrix_dict.get(matrix_name):
         k, v = kv_pair, element.get(kv_pair)
         matrix_link_str += f"\\\"{k}\\\":\\\"{v}\\\","
     matrix_link_str = matrix_link_str[:-1]
-    matrix_link_str += "}"
+    matrix_link_str += "},"
+matrix_link_str = matrix_link_str[:-1]
 matrix_link_str += "}]"
 
 print(matrix_link_str)
