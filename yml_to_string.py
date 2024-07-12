@@ -37,7 +37,7 @@ with open("beamline_info.yml") as file:
 matrix_link_str += "\\\"include\\\":["
 for element in matrix_dict.get(matrix_name):
     print(element)
-    matrix_link_str += "{\\\"" + matrix_name + "\":{"
+    matrix_link_str += "{\\\"" + matrix_name + "\\\":{"
     for kv_pair in element:
         k, v = kv_pair, element.get(kv_pair)
         matrix_link_str += f"\\\"{k}\\\":\\\"{v}\\\","
