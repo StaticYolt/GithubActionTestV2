@@ -7,8 +7,10 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJson(beamline_info.yml) }}
+    outputs:
+      test_matrix: toJson(["1", "2", "3"])
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ matrix.repo.repo }}
+      - run: ${{ needs.job1.outputs.test_matrix }}
