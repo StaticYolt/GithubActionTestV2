@@ -34,7 +34,7 @@ with open("beamline_info.yml") as file:
 # matrix_link_str = matrix_link_str[:-1]
 # matrix_link_str += "}]"
 
-matrix_link_str += "\\\"include\\\":["
+matrix_link_str += "{\\\"include\\\":["
 for element in matrix_dict.get(matrix_name):
     print(element)
     matrix_link_str += "{\\\"" + matrix_name + "\\\":{"
@@ -44,7 +44,7 @@ for element in matrix_dict.get(matrix_name):
     matrix_link_str = matrix_link_str[:-1]
     matrix_link_str += "}},"
 matrix_link_str = matrix_link_str[:-1]
-matrix_link_str += "]"
+matrix_link_str += "]}"
 
 print(matrix_link_str)
 os.environ["LINK_STR"] = matrix_link_str
