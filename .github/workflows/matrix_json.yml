@@ -11,7 +11,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
-        run: echo "matrix={\"include\":[{\"project\":{\"name\":\"foo\",\"a\":1,\"b\":2}},{\"project\":{\"name\":\"bar\",\"a\":3,\"b\":4}}]}" >> $GITHUB_OUTPUT
+        run: echo "matrix={\"include\":[{\"repos\":{\"name\":\"csx\",\"org\":NSLS-II-CSX,\"acronym\":csx}},{\"repos\":{\"name\":\"srx\",\"org\":NSLS-II-SRX,\"acronym\":srx}}]}" >> $GITHUB_OUTPUT
   job2:
     needs: job1
     runs-on: ubuntu-latest
@@ -19,6 +19,6 @@ jobs:
       matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
       - run: |
-          echo "Matrix - Project ${{ matrix.project.a }}"
-          echo "Matrix - Project ${{ matrix.project }}"
+          echo "Matrix - Project ${{ matrix.project.org }}"
+          echo "Matrix - Project ${{ matrix.project.acronym }}"
 
