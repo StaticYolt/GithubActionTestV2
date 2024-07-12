@@ -22,16 +22,16 @@ with open("beamline_info.yml") as file:
             value = lsplit[5].split("\"")[1]
             matrix_dict.get(matrix_name)[-1][key] = value
         print(lsplit)
-matrix_link_str += "\'\"include\":[{" + f"\"{matrix_name}\":"
+matrix_link_str += "\\\"include\\\":[{" + f"\\\"{matrix_name}\\\":"
 for element in matrix_dict.get(matrix_name):
     matrix_link_str += "{"
     print(element)
     for kv_pair in element:
         k, v = kv_pair, element.get(kv_pair)
-        matrix_link_str += f"\"{k}\":\"{v}\","
+        matrix_link_str += f"\\\"{k}\\\":\\\"{v}\\\","
     matrix_link_str = matrix_link_str[:-1]
     matrix_link_str += "}"
-matrix_link_str += "}]\'"
+matrix_link_str += "}]"
 
 print(matrix_link_str)
 os.environ["LINK_STR"] = matrix_link_str
