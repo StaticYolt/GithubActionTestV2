@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{ beamline_info.yml }}
+      matrix: ${{ fromJson(beamline_info.yml) }}
     steps:
       - run: echo ${{ matrix.repo.repo }}
