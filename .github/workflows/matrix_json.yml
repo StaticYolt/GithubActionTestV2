@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       test_matrix: toJson(["1", "2", "3"])
+    steps:
+      - run: echo "buffer step"
   job2:
     needs: job1
     runs-on: ubuntu-latest
