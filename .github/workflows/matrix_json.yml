@@ -19,6 +19,7 @@ jobs:
       matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
       - run: |
-          echo "Matrix - Project ${{ matrix.project.org }}"
-          echo "Matrix - Project ${{ matrix.project.acronym }}"
+          echo "Matrix - Project ${{ matrix.repos.org }}"
+          echo "Matrix - Project ${{ matrix.repos.name }}"
+          echo "Matrix - Project ${{ matrix.repos.acronym }}"
 
