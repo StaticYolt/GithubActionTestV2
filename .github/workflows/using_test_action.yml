@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test out test-action
-        uses: StaticYolt/testing-conda-environment@v1.0.1
+        uses: StaticYolt/testing-conda-environment@v1.0.2
         with:
-          python-version: ${{ inputs.version }}
+          test-conda-packed-name: "2024-2.1-py310-tiled"
           org: "NSLS-II-CSX"
           repo: "profile_collections"
           branch: "master"
