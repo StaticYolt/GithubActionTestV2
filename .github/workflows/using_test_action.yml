@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test out test-action
-        uses: StaticYolt/sy-test-action@v3
+        uses: StaticYolt/testing-conda-environment@v1.0.0
         with:
           python-version: ${{ inputs.version }}
+          org: "NSLS-II-CSX"
+          repo: "profile_collections"
+          branch: "master"
+          beamline-acronym: "csx"
