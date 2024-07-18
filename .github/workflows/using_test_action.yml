@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test out test-action
-        uses: StaticYolt/testing-conda-environment@v1.0.0
+        uses: StaticYolt/testing-conda-environment@v1.0.1
         with:
           python-version: ${{ inputs.version }}
           org: "NSLS-II-CSX"
