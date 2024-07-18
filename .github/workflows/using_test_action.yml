@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test out test-action
-        uses: StaticYolt/sy-test-action@master/main/
+        uses: StaticYolt/sy-test-action@v2
         with:
           python-version: ${{ inputs.version }}
