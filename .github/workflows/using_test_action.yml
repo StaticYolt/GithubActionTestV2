@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test out test-action
-        uses: StaticYolt/testing-conda-environment@v1.2.1
+        uses: StaticYolt/testing-conda-environment@v1.2.2
         with:
           run-id: "9991543724"
           test-conda-packed-name: "2024-2.1-py310-tiled"
