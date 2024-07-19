@@ -1,15 +1,16 @@
 on:
-  workflow_call:
-    inputs:
-      version: # the variable you can use in place of a matrix
-        required: true
-        type: string
+  push:
+#  workflow_call:
+#    inputs:
+#      version: # the variable you can use in place of a matrix
+#        required: true
+#        type: string
 jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
       - name: Test out test-action
-        uses: StaticYolt/testing-conda-environment@v1.1.6
+        uses: StaticYolt/testing-conda-environment@v1.1.7
         with:
           run-id: "9991543724"
           test-conda-packed-name: "2024-2.1-py310-tiled"
