@@ -15,6 +15,6 @@ jobs:
           run-id: "9991543724"
           test-conda-packed-name: "2024-2.1-py310-tiled"
           org: "NSLS-II-CSX"
-          repo: "profile_collections"
+          repo: "profile_collection"
           branch: "master"
           beamline-acronym: "csx"
