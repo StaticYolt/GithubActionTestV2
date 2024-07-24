@@ -45,8 +45,22 @@ matrix_link_str = matrix_link_str[:-1]
 matrix_link_str += "]}"
 
 def get_matrix_link():
-    return matrix_link_str
+    test_string = """
+    {
+      "repos": [
+        {
+          "org": "NSLS-II-CSX",
+          "repo": "profile_collection"
+        },
+        {
+          "org": "NSLS-II-SRX",
+          "repo": "profile_collection"
+        }
+      ]
+    }
+    """
+    return test_string
 
 if __name__ == "__main__":
-    print(matrix_link_str)
+    print(get_matrix_link())
 # os.system("echo LINK_STR=" + matrix_link_str + " >> $GITHUB_ENV")
