@@ -1,5 +1,5 @@
 on:
-  push:
+#  push:
 #  workflow_call:
 #    inputs:
 #      version: # the variable you can use in place of a matrix
