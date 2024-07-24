@@ -21,7 +21,6 @@ with open("beamline_info.yml") as file:
             key = lsplit[4][:-1]
             value = lsplit[5].split("\"")[1]
             matrix_dict.get(matrix_name)[-1][key] = value
-        print(lsplit)
 # matrix_link_str += "\\\"include\\\":[" + f"\\\"{matrix_name}\\\":"
 # for element in matrix_dict.get(matrix_name):
 #     matrix_link_str += "{"
@@ -36,7 +35,6 @@ with open("beamline_info.yml") as file:
 
 matrix_link_str += "{\\\"include\\\":["
 for element in matrix_dict.get(matrix_name):
-    print(element)
     matrix_link_str += "{\\\"" + matrix_name + "\\\":{"
     for kv_pair in element:
         k, v = kv_pair, element.get(kv_pair)
@@ -46,5 +44,9 @@ for element in matrix_dict.get(matrix_name):
 matrix_link_str = matrix_link_str[:-1]
 matrix_link_str += "]}"
 
-print(matrix_link_str)
-os.system("echo LINK_STR=" + matrix_link_str + " >> $GITHUB_ENV")
+def get_matrix_link():
+    return matrix_link_str
+
+if __name__ == "__main__":
+    print(matrix_link_str)
+# os.system("echo LINK_STR=" + matrix_link_str + " >> $GITHUB_ENV")
