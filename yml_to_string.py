@@ -46,7 +46,26 @@ matrix_link_str += "]}"
 
 def get_matrix_link():
     test_string = """
-    {"repos":[{"org": "NSLS-II-CSX","repo": "profile_collection"},{"org": "NSLS-II-SRX","repo": "profile_collection"}]}
+{
+  "include": [
+    {
+      "repos": {
+        "name": "csx",
+        "org": "NSLS-II-CSX",
+        "repo": "profile_collection",
+        "acronym": "csx"
+      }
+    },
+    {
+      "repos": {
+        "name": "srx",
+        "org": "NSLS-II-SRX",
+        "repo": "profile_collection",
+        "acronym": "srx"
+      }
+    }
+  ]
+}
     """
     return test_string
 
