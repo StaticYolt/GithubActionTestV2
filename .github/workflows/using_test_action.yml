@@ -117,7 +117,7 @@ jobs:
         run: echo "TEST_ENV_NAME=${{ env.CONDA_PACK_ENV_NAME }}" >> $GITHUB_ENV
 
   testing_conda_artifact:
-    name: ${{ matrix.repos.beamline_acronym }}-${{ inputs.version }}
+    name: ${{ matrix.repos.beamline_acronym }}-3.10
     needs: generate_conda_packd_envs
     env:
       REPO_URL: "https://github.com/${{matrix.repos.org}}/${{matrix.repos.repo}}"
@@ -183,6 +183,41 @@ jobs:
           MD_FILE_NAME: markdown_file
           GH_TOKEN: ${{ github.token }}
         run: |
-          python3 beamline_status_to_md.py -p "${{ inputs.version }}" -a "${{ github.run_id }}" -m "$MD_FILE_NAME"
+          python3 beamline_status_to_md.py -p "3.10" -a "${{ github.run_id }}" -m "$MD_FILE_NAME"
           cat "$MD_FILE_NAME.md"
           cp "$MD_FILE_NAME.md" $GITHUB_STEP_SUMMARY
+  deposition:
+    needs: report_generation
+    runs-on: ubuntu-latest
+    if: always()
+    env:
+      WORKFLOW_ID: ${{ github.run_id }}
+      TZ: America/New_York
+    steps:
+      - name: Set env vars
+        run: |
+          export ZENODO_TOKEN=${{ secrets.ZENODO_TOKEN }}
+          echo "ZENODO_TOKEN=${ZENODO_TOKEN}" >> $GITHUB_ENV
+
+          export GHA_TOKEN=${{github.token}}
+          echo "GHA_TOKEN=${GHA_TOKEN}" >> $GITHUB_ENV
+
+          export GH_TOKEN=${{github.token}}
+          echo "GH_TOKEN=${GH_TOKEN}" >> $GITHUB_ENV
+      - name: checkout the code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install YAML CLI tools
+        run: |
+          python3 -m pip install shyaml
+      - name: download artifacts v2
+        run: |
+          set -vxeuo pipefail
+          python3 parse_for_artifacts.py -a "${{ env.WORKFLOW_ID }}"
+      - name: Upload artifacts to Zenodo
+        run: |
+          python3 -m pip install requests
+          python3 upload_on_success.py -a "${{ env.WORKFLOW_ID }}"
